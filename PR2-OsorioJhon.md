@@ -1,4 +1,4 @@
-1. Quines són les característiques i els escenaris d'ús de les metodologies àgils de desenvolupament de programari? Explica amb detall i posa un exemple.
+## 1. Quines són les característiques i els escenaris d'ús de les metodologies àgils de desenvolupament de programari? Explica amb detall i posa un exemple.
 
 Primero, que son las metodologías ágiles? Son enfoques en el que el desarrollo del Software se hace de manera más flexible y adaptable ya que se hace en colaboración constante con los clientes.
 
@@ -73,9 +73,10 @@ public class OrderProcessor
         _emailService.SendEmail(customerEmail, "Pedido confirmado", "Gracias por su compra.");
     }
 }
-
+´´´
 Y ESTE SERIA EL TEST UTILIZANDO EL MOCK 
 
+```csharp
 [TestClass]
 public class OrderProcessorTests
 {
@@ -102,30 +103,5 @@ public class OrderProcessorTests
         );
     }
 }
-[TestClass]
-public class OrderProcessorTests
-{
-    [TestMethod]
-    public void ShouldSendConfirmationEmailWhenOrderIsProcessed()
-    {
-        // Crear un "Mock" del servicio de correos (simulador)
-        var emailServiceMock = new Mock<IEmailService>();
-
-        // Crear la clase que vamos a probar, usando el mock
-        var orderProcessor = new OrderProcessor(emailServiceMock.Object);
-
-        // Llamar al método que queremos probar
-        orderProcessor.ProcessOrder("Detalles del pedido", "cliente@ejemplo.com");
-
-        // Verificar que el servicio de correos fue llamado correctamente
-        emailServiceMock.Verify(
-            email => email.SendEmail(
-                "cliente@ejemplo.com", 
-                "Pedido confirmado", 
-                "Gracias por su compra."
-            ),
-            Times.Once
-        );
-    }
-}
+´´´
 
